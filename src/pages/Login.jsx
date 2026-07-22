@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../api/auth';
 
 function Login() {
@@ -44,6 +44,12 @@ function Login() {
           </button>
         </form>
         {message && <p className="text-red-500 text-sm mt-4 text-center">{message}</p>}
+        <p className="text-sm text-gray-500 text-center mt-6">
+          Don't have an account?{' '}
+          <Link to="/signup" className="text-orange-500 font-semibold hover:underline">
+            Sign Up
+          </Link>
+        </p>
       </div>
     </div>
   );

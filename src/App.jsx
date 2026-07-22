@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Link, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
@@ -8,7 +9,7 @@ function Navbar() {
   const location = useLocation();
   const isLoggedIn = !!localStorage.getItem('access_token');
 
-  const hideNavbarOn = ['/login', '/signup'];
+  const hideNavbarOn = ['/', '/login', '/signup'];
   if (hideNavbarOn.includes(location.pathname)) {
     return null;
   }
@@ -40,7 +41,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { registerUser } from '../api/auth';
 
 function Signup() {
@@ -51,6 +51,12 @@ function Signup() {
           </button>
         </form>
         {message && <p className="text-red-500 text-sm mt-4 text-center">{message}</p>}
+        <p className="text-sm text-gray-500 text-center mt-6">
+          Already have an account?{' '}
+          <Link to="/login" className="text-orange-500 font-semibold hover:underline">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   );
