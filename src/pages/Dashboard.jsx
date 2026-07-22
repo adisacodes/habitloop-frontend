@@ -30,27 +30,44 @@ function Dashboard() {
     }
   };
 
+  const emojis = ['🔥', '💧', '📚', '🏃', '🧘', '🎯', '✨', '🌱'];
+
   return (
-    <div>
-      <h2>Your Habits</h2>
-      <form onSubmit={handleAddHabit}>
+    <div className="min-h-screen bg-orange-50 p-8">
+      <h2 className="text-4xl font-bold text-orange-500 mb-6 text-center">Your Habits ✨</h2>
+
+      <form onSubmit={handleAddHabit} className="flex gap-2 max-w-md mx-auto mb-8">
         <input
           placeholder="New habit name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="flex-1 border-2 border-orange-200 rounded-xl px-4 py-2 focus:outline-none focus:border-orange-400 bg-white"
         />
-        <button type="submit">Add Habit</button>
+        <button
+          type="submit"
+          className="bg-orange-400 hover:bg-orange-500 text-white font-bold px-5 rounded-xl transition"
+        >
+          Add
+        </button>
       </form>
 
-      {error && <p>{error}</p>}
+      {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 
-      <ul>
-        {habits.map((habit) => (
-          <li key={habit.id}>
-            {habit.name} — {habit.frequency}
-          </li>
+      <div className="grid gap-4 max-w-md mx-auto">
+        {habits.map((habit, i) => (
+          <div
+            key={habit.id}
+            className="bg-white rounded-2xl shadow p-4 flex items-center justify-between border-2 border-orange-100 hover:border-orange-300 transition"
+          >
+            <span className="font-semibold text-gray-700">
+              {emojis[i % emojis.length]} {habit.name}
+            </span>
+            <span className="text-sm text-orange-400 bg-orange-100 px-3 py-1 rounded-full">
+              {habit.frequency}
+            </span>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
