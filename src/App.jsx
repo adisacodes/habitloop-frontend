@@ -21,16 +21,17 @@ function Navbar() {
   };
 
   return (
-    <nav className="flex justify-center gap-4 py-4 bg-white shadow-sm mb-4">
+    <nav className="flex justify-between items-center px-6 py-4 bg-white shadow-sm mb-4">
+      <span className="text-orange-500 font-bold text-lg">HabitLoop 🔁</span>
       {isLoggedIn ? (
         <button onClick={handleLogout} className="text-orange-500 font-semibold hover:underline">
           Logout
         </button>
       ) : (
-        <>
+        <div className="flex gap-4">
           <Link to="/login" className="text-orange-500 font-semibold hover:underline">Login</Link>
           <Link to="/signup" className="text-orange-500 font-semibold hover:underline">Sign Up</Link>
-        </>
+        </div>
       )}
     </nav>
   );
